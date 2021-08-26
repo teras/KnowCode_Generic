@@ -53,12 +53,12 @@ public class WindowOne extends Window{
             CreateCheckBox();
             CreateImage();
             CreateLabel();
-           // CreateProgressBar();
-           CreateSwitch();
-           CreateComboBox();
-           CreateEdit();
-           CreateRadioButton();
-           CreateSlider();
+            CreateProgressBar();
+            CreateSwitch();
+            CreateComboBox();
+            CreateEdit();
+            CreateRadioButton();
+            CreateSlider();
         } catch (IOException | ImageException e) {
             e.printStackTrace();
         }
@@ -185,37 +185,19 @@ public class WindowOne extends Window{
 
             // vertical ones
             progressBar = new ProgressBar();
-            progressBar.vertical = true;
+            progressBar.vertical = false;
             progressBar.max = max;
             progressBar.textColor = Color.BLUE;
             progressBar.setBackColor(Color.CYAN);
             progressBar.setForeColor(Color.GREEN);
-            add(progressBar, RIGHT, AFTER , PREFERRED, FILL);
+            progressBar.drawBorder = true;
+            add(progressBar, CENTER + 50, CENTER + 50);
 
-
-            onSwapFinished();
         } catch (Exception ee) {
            ee.printStackTrace();
         }
     }
-
-    @Override
-    public void onSwapFinished() {
-        final int ini = Vm.getTimeStamp();
-        repaintNow();
-        // runs the bench test
-        int max = progressBar.max;
-        for (int i = max; --i >= 0;) {
-            int v = progressBar.getValue();
-            v = (v + 1) % (progressBar.max + 1);
-            Control.enableUpdateScreen = false; // since each setValue below updates the screen, we disable it to let it paint all at once at the end
-            progressBar.setValue(i);
-            if (Settings.onJavaSE) {
-                Vm.sleep(20);
-            }
-        }
-    }
-    
+   
     public void CreateRadioButton (){
         Radio radio = new Radio("Radio Button");
         radio.setBackForeColors(Color.WHITE,Color.BLACK);
