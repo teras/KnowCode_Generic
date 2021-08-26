@@ -12,6 +12,7 @@ import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.ProgressBar;
 import totalcross.ui.Radio;
+import totalcross.ui.Slider;
 import totalcross.ui.Switch;
 import totalcross.ui.Window;
 import totalcross.ui.dialog.MessageBox;
@@ -57,6 +58,7 @@ public class WindowOne extends Window{
            CreateComboBox();
            CreateEdit();
            CreateRadioButton();
+           CreateSlider();
         } catch (IOException | ImageException e) {
             e.printStackTrace();
         }
@@ -178,6 +180,7 @@ public class WindowOne extends Window{
    
     public void CreateProgressBar (){
         try {
+
             final int max = Settings.onJavaSE ? 2000 : 200;
 
             // vertical ones
@@ -264,7 +267,17 @@ public class WindowOne extends Window{
     }
 
     public void CreateSlider (){
-
+        Slider slider = new Slider(HORIZONTAL_GRADIENT);
+        slider.setBorderRadius(60);
+        slider.setFont(Font.getFont(false, Font.NORMAL_SIZE));
+        slider.appId = 1;
+        slider.setLiveScrolling(true);
+        slider.setBackColor(Color.BLUE);
+        slider.sliderColor = Color.WHITE;
+        slider.barHeight = 10;
+        slider.setValue(10);
+        //slider.invertDirection = true;
+        add(slider,CENTER + 20,CENTER + 20,100,20);
     }
 
     public void CreateEdit (){
