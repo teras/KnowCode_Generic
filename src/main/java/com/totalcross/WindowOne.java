@@ -11,6 +11,7 @@ import totalcross.ui.Edit;
 import totalcross.ui.ImageControl;
 import totalcross.ui.Label;
 import totalcross.ui.ProgressBar;
+import totalcross.ui.Radio;
 import totalcross.ui.Switch;
 import totalcross.ui.Window;
 import totalcross.ui.dialog.MessageBox;
@@ -55,6 +56,7 @@ public class WindowOne extends Window{
            CreateSwitch();
            CreateComboBox();
            CreateEdit();
+           CreateRadioButton();
         } catch (IOException | ImageException e) {
             e.printStackTrace();
         }
@@ -212,7 +214,13 @@ public class WindowOne extends Window{
     }
     
     public void CreateRadioButton (){
-
+        Radio radio = new Radio("Radio Button");
+        radio.setBackForeColors(Color.WHITE,Color.BLACK);
+        radio.transparentBackground = true;
+        radio.setChecked(false);
+        radio.setForeColor(Color.BLUE);
+        radio.setFont(Font.getFont(Font.DEFAULT,false,20));
+        add(radio, CENTER,CENTER);
     }
 
     public void CreateSwitch (){
